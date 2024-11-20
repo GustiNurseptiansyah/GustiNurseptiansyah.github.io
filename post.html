@@ -83,7 +83,7 @@
       masyarakat tentang pentingnya kebersihan lingkungan.</p>
     <p>Kegiatan ini telah didokumentasikan dalam sebuah video yang kini tersedia di YouTube. Video tersebut memberikan
       gambaran jelas tentang semangat peserta, proses pembersihan taman, serta wawancara dengan narasumber dari Dinas
-      Lingkungan Hidup (DLH) Kota Bogor. Video dapat ditonton melalui tautan berikut: saya butuh link.</p>
+      Lingkungan Hidup (DLH) Kota Bogor. Video dapat ditonton melalui tautan berikut: <a target="_blank" href="https://youtu.be/QF4E39ZA5K8?si=eLekCCn_zBlN_taI">video dokumentasi.</a></p>
     <img src="../images/OndeMande4.jpg" class="w-100 mb-3 rounded-3 object-fit-cover kirara" alt="...">
     <p>Selama kegiatan berlangsung, para peserta menemukan bahwa sebagian besar sampah di Taman Heulang berupa dedaunan
       kering yang menumpuk di berbagai sudut taman. Hal ini juga dikonfirmasi oleh <strong>Muhammad Rizal
@@ -108,8 +108,8 @@
     <p>Kegiatan ini diharapkan dapat menginspirasi masyarakat untuk lebih peduli terhadap kebersihan lingkungan sebagai
       bentuk nyata cinta tanah air. Dengan menjaga taman tetap bersih, masyarakat secara tidak langsung turut mendukung
       keberlanjutan ruang publik yang sehat dan nyaman.</p>
-    <p class="d-flex align-items-center gap-2">Share <i class="logos--facebook" style="color: #000000;"></i> <i
-        class="devicon--twitter" style="color: #FFf;"></i> <i class="skill-icons--instagram" style="color: #FFf;"></i>
+    <p class="d-flex align-items-center gap-2">Share <i id="copyUrl" class="solar--copy-bold"></i> <i class="logos--facebook" id="facebookShare" style="color: #000000;"></i> 
+      <i class="devicon--twitter" id="twitterShare" style="color: #FFf;"></i> <i class="logos--whatsapp-icon" id="whatsappShare"></i>
     </p>
   </section>
 
@@ -117,6 +117,46 @@
     <p>Copyright © 2024 - Gusti Nurseptiansyah</p>
   </footer>
 
+  <script>
+    // Facebook Share
+document.getElementById('facebookShare').addEventListener('click', () => {
+  const facebookShare = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+  window.open(facebookShare, '_blank');
+});
+
+// Twitter Share
+document.getElementById('twitterShare').addEventListener('click', () => {
+  const twitterShare = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=Check this out!`;
+  window.open(twitterShare, '_blank');
+});
+
+// WhatsApp Share
+document.getElementById('whatsappShare').addEventListener('click', () => {
+  const whatsappShare = `https://api.whatsapp.com/send?text=Check out this page: ${window.location.href}`;
+  window.open(whatsappShare, '_blank');
+});
+
+// Copy URL
+document.getElementById('copyUrl').addEventListener('click', () => {
+  const copyMessage = document.getElementById('copyMessage');
+  const url = window.location.href; // Ambil URL saat ini
+
+  navigator.clipboard.writeText(url).then(() => {
+    copyMessage.textContent = 'URL berhasil disalin ke clipboard!';
+    copyMessage.classList.add('visible');
+
+    // Hilangkan pesan setelah 3 detik
+    setTimeout(() => {
+      copyMessage.classList.remove('visible');
+    }, 3000);
+  }).catch((err) => {
+    console.error('Gagal menyalin URL:', err);
+    copyMessage.textContent = 'Gagal menyalin URL.';
+    copyMessage.classList.add('visible');
+  });
+});
+
+  </script>
   <script src="../styles/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </body>
 
